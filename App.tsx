@@ -32,7 +32,7 @@ export default function App() {
               collapsed={sidebarCollapsed}
               onClick={() => setSidebarCollapsed((collapsed) => !collapsed)}
             />
-            <span data-divider className="absolute left-0 bottom-[-10px] w-full h-px bg-contrast-high/10"></span>
+            <span data-divider className="absolute left-0 bottom-[-10px] w-full h-px bg-contrast-high/5"></span>
           </header>
 
           <NavList>
