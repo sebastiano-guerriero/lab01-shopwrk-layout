@@ -6,6 +6,7 @@ import { CalendarPlanningOutlineDuo18 } from "./components/icons/CalendarPlannin
 import { CircleDollarOutOutlineDuo18 } from "./components/icons/CircleDollarOutOutlineDuo18";
 import { FilesContentOutlineDuo18 } from "./components/icons/FilesContentOutlineDuo18";
 import { GridLayout5OutlineDuo18 } from "./components/icons/GridLayout5OutlineDuo18";
+import { MagnifierOutline18 } from "./components/icons/MagnifierOutline18";
 import { MegaphoneOutlineDuo18 } from "./components/icons/MegaphoneOutlineDuo18";
 import { MsgRobotOutlineDuo18 } from "./components/icons/MsgRobotOutlineDuo18";
 import { Msgs2OutlineDuo18 } from "./components/icons/Msgs2OutlineDuo18";
@@ -26,6 +27,11 @@ export default function App() {
           </header>
 
           <NavList className="mb-6">
+            <button className="group h-8 flex items-center gap-2.5 w-full rounded-[10px] px-2.5 select-none light:bg-contrast-high/3 hover:bg-contrast-high/5 light:inset-ring-1 light:inset-ring-contrast-high/5 light:shadow-2xs light:shadow-white/20 light:inset-shadow-2xs light:inset-shadow-contrast-high/5 dark:shadow-[inset_0px_-1px_0px_rgba(248,247,247,0.15),inset_0px_0px_0px_1px_rgba(248,247,247,0.15)]">
+              <MagnifierOutline18 className="text-contrast-medium group-hover:text-contrast-high" />
+              <span className="text-contrast-low">Search</span>
+            </button>
+
             <NavItem icon={<MsgRobotOutlineDuo18 duoOpacity={0.2} />}>
               Ask ShopWrk
             </NavItem>
