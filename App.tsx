@@ -1,8 +1,15 @@
 import Logo from "./components/Logo";
 import NavItem from "./components/NavItem";
 import NavList from "./components/NavList";
+import { AddressBookOutlineDuo18 } from "./components/icons/AddressBookOutlineDuo18";
 import { CalendarPlanningOutlineDuo18 } from "./components/icons/CalendarPlanningOutlineDuo18";
+import { CircleDollarOutOutlineDuo18 } from "./components/icons/CircleDollarOutOutlineDuo18";
+import { FilesContentOutlineDuo18 } from "./components/icons/FilesContentOutlineDuo18";
 import { GridLayout5OutlineDuo18 } from "./components/icons/GridLayout5OutlineDuo18";
+import { MegaphoneOutlineDuo18 } from "./components/icons/MegaphoneOutlineDuo18";
+import { MsgRobotOutlineDuo18 } from "./components/icons/MsgRobotOutlineDuo18";
+import { Msgs2OutlineDuo18 } from "./components/icons/Msgs2OutlineDuo18";
+import { UserSettingsOutlineDuo18 } from "./components/icons/UserSettingsOutlineDuo18";
 
 export default function App() {
   return (
@@ -18,13 +25,47 @@ export default function App() {
             </button>
           </header>
 
-          <NavList label="Overview">
+          <NavList className="mb-6">
+            <NavItem icon={<MsgRobotOutlineDuo18 duoOpacity={0.2} />}>
+              Ask ShopWrk
+            </NavItem>
+          </NavList>
+
+          <NavList label="Overview" className="mb-6">
             <NavItem selected icon={<GridLayout5OutlineDuo18 duoOpacity={0.2} />}>
               Dashboard
             </NavItem>
 
             <NavItem icon={<CalendarPlanningOutlineDuo18 duoOpacity={0.2} />}>
               Calendar
+            </NavItem>
+          </NavList>
+
+          <NavList label="Customers" className="mb-6">
+            <NavItem icon={<Msgs2OutlineDuo18 duoOpacity={0.2} />}>
+              Conversations
+            </NavItem>
+
+            <NavItem icon={<AddressBookOutlineDuo18 duoOpacity={0.2} />}>
+              Contacts
+            </NavItem>
+
+            <NavItem icon={<UserSettingsOutlineDuo18 duoOpacity={0.2} />}>
+              CRM
+            </NavItem>
+          </NavList>
+
+          <NavList label="Business" className="mb-6">
+            <NavItem icon={<CircleDollarOutOutlineDuo18 duoOpacity={0.2} />}>
+              Payments
+            </NavItem>
+
+            <NavItem icon={<FilesContentOutlineDuo18 duoOpacity={0.2} />}>
+              Documents
+            </NavItem>
+
+            <NavItem icon={<MegaphoneOutlineDuo18 duoOpacity={0.2} />}>
+              Marketing
             </NavItem>
           </NavList>
         </aside>
