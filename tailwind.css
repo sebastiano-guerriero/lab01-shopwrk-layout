@@ -8,7 +8,6 @@
   :root {
     font-family: var(--font-primary);
     font-feature-settings: "liga" 1, "calt" 1; /* fix for Chrome */
-    background: var(--color-background-darker);
   }
 
   body {
