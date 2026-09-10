@@ -1,4 +1,7 @@
 import Logo from "./components/Logo";
+import NavItem from "./components/NavItem";
+import NavList from "./components/NavList";
+import { CalendarPlanningOutlineDuo18 } from "./components/icons/CalendarPlanningOutlineDuo18";
 import { GridLayout5OutlineDuo18 } from "./components/icons/GridLayout5OutlineDuo18";
 
 export default function App() {
@@ -6,21 +9,24 @@ export default function App() {
     <main className="h-screen p-2">
       <div className="grid grid-cols-[256px_1fr] h-full">
         {/* sidebar */}
-        <aside>
-          <header>
+        <aside className="pl-1 pr-3">
+          <header className="pl-1.5 pt-[19px] flex items-center relative mb-[19px]">
             <Logo />
 
-            <button></button>
+            <button className="size-8 rounded-[10px] flex absolute">
+
+            </button>
           </header>
 
-          <ul>
-            <li>
-              <button className="h-8 flex items-center gap-2.5 w-full text-contrast-medium">
-                <GridLayout5OutlineDuo18 duoOpacity={0.2} />
-                <span>Dashboard</span>
-              </button>
-            </li>
-          </ul>
+          <NavList label="Overview">
+            <NavItem selected icon={<GridLayout5OutlineDuo18 duoOpacity={0.2} />}>
+              Dashboard
+            </NavItem>
+
+            <NavItem icon={<CalendarPlanningOutlineDuo18 duoOpacity={0.2} />}>
+              Calendar
+            </NavItem>
+          </NavList>
         </aside>
 
         {/* main container */}
