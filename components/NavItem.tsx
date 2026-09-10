@@ -17,8 +17,8 @@ export default function NavItem({ icon, children, selected = false }: NavItemPro
           : "text-contrast-medium hover:bg-contrast-high/5 dark:hover:bg-contrast-high/7 hover:text-contrast-high"
       }`}
     >
-      {icon}
-      <span>{children}</span>
+      <span className="shrink-0">{icon}</span>
+      <span className="whitespace-nowrap">{children}</span>
     </button>
   );
 }
