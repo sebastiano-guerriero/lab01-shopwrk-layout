@@ -6,20 +6,18 @@
 
 @layer base {
   :root {
-    font-family: Inter, sans-serif;
+    font-family: var(--font-primary);
     font-feature-settings: "liga" 1, "calt" 1; /* fix for Chrome */
-  }
-
-  @supports (font-variation-settings: normal) {
-    :root {
-      font-family: InterVariable, sans-serif;
-    }
+    background: var(--color-background-darker);
   }
 
   body {
     font-variant-numeric: slashed-zero;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    color: var(--color-contrast-high);
+    font-size: var(--text-base);
+    font-weight: 500;
   }
 
   *, *:before, *:after {
@@ -108,6 +106,8 @@
   --color-contrast-low: #6A6462;
   --color-contrast-medium: #ADA9A9;
   --color-contrast-high: #F8F7F7;
+
+  color: var(--color-contrast-high);
 }
 
 @utility mask-clip-padding-only {
