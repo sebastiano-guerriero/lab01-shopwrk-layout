@@ -9,6 +9,7 @@ type NavItemProps = {
 export default function NavItem({ icon, children, selected = false }: NavItemProps) {
   return (
     <button
+      data-sidebar-item
       aria-current={selected ? "page" : undefined}
       className={`h-8 flex items-center gap-2.5 w-full rounded-[10px] px-2.5 select-none ${
         selected
@@ -18,7 +19,7 @@ export default function NavItem({ icon, children, selected = false }: NavItemPro
       }`}
     >
       <span className="shrink-0">{icon}</span>
-      <span className="whitespace-nowrap">{children}</span>
+      <span data-sidebar-fade className="whitespace-nowrap">{children}</span>
     </button>
   );
 }

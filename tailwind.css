@@ -118,12 +118,98 @@
   corner-shape: round;
 }
 
-/* sidebar icon animation */
+/* sidebar collapse
+   Animate `width` (not an inherited custom property) so style recalc stays
+   on the aside. Inner content is clipped instead of reflowed. */
+[data-sidebar] {
+  --sidebar-width: 256px;
+  width: var(--sidebar-width);
+  overflow: hidden;
+  contain: layout paint;
+  transition: width 300ms var(--ease-out), gap 300ms var(--ease-out);
+}
+
+[data-sidebar][data-sidebar-collapsed] {
+  --sidebar-width: 48px;
+  gap: 0;
+}
+
+[data-sidebar-fade] {
+  transition: opacity 150ms var(--ease-out);
+}
+
+[data-sidebar-collapsed] [data-sidebar-fade] {
+  opacity: 0;
+  pointer-events: none;
+}
+
+[data-sidebar-item] {
+  overflow: hidden;
+  transition: padding-left 300ms var(--ease-out);
+}
+
+[data-sidebar-collapsed] [data-sidebar-item] {
+  padding-left: 7px;
+}
+
+[data-sidebar] > header {
+  margin-bottom: 0;
+  transition: margin-bottom 300ms var(--ease-out);
+}
+
+[data-sidebar][data-sidebar-collapsed] > header {
+  margin-bottom: calc(var(--spacing) * 5);
+}
+
+[data-divider] {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms var(--ease-out);
+}
+
+[data-sidebar-collapsed] [data-divider] {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-sidebar],
+  [data-sidebar-fade],
+  [data-sidebar-item],
+  [data-sidebar] > header,
+  [data-divider],
+  [data-sidebar-icon-line],
+  [data-sidebar-icon-panel] {
+    transition: none;
+  }
+}
+
+/* sidebar icon animation
+   A = expanded rest (lines visible, panel 7.5px)
+   B = expanded hover / collapsed rest (lines hidden, panel 10px)
+   Collapsed hover returns to A. After a click while hovered, lock until
+   pointerleave so the pose that just finished is kept as the new rest. */
+[data-sidebar-trigger] {
+  --sidebar-icon-lines: 1;
+  --sidebar-icon-panel: 7.5px;
+}
+
+[data-sidebar-trigger]:hover:not([data-sidebar-icon-hover-lock]),
+[data-sidebar-collapsed] [data-sidebar-trigger] {
+  --sidebar-icon-lines: 0.001;
+  --sidebar-icon-panel: 10px;
+}
+
+[data-sidebar-collapsed] [data-sidebar-trigger]:hover:not([data-sidebar-icon-hover-lock]) {
+  --sidebar-icon-lines: 1;
+  --sidebar-icon-panel: 7.5px;
+}
+
 [data-sidebar-icon-line] {
-  stroke-dasharray: 1 1;
+  stroke-dasharray: var(--sidebar-icon-lines) 1;
   transition: stroke-dasharray 200ms var(--ease-out);
 }
 
-[data-sidebar-trigger]:hover [data-sidebar-icon-line] {
-  stroke-dasharray: 0.001 1;
+[data-sidebar-icon-panel] {
+  width: var(--sidebar-icon-panel);
+  transition: width 200ms var(--ease-out);
 }

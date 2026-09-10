@@ -10,9 +10,9 @@ export default function NavList({ children, label, className }: NavListProps) {
   const labelId = useId();
 
   return (
-    <nav aria-labelledby={label ? labelId : undefined} className={className}>
+    <div aria-labelledby={label ? labelId : undefined} className={`relative ${className ?? ""}`}>
       {label ? (
-        <p id={labelId} className="px-2.5 mb-2 text-sm text-contrast-low leading-none select-none">
+        <p id={labelId} data-sidebar-fade className="px-2.5 mb-2 text-sm text-contrast-low leading-none select-none">
           {label}
         </p>
       ) : null}
@@ -21,6 +21,7 @@ export default function NavList({ children, label, className }: NavListProps) {
           <li>{child}</li>
         ))}
       </ul>
-    </nav>
+      <span data-divider className="absolute left-0 bottom-[-10px] w-full h-px bg-contrast-high/10"></span>
+    </div>
   );
 }

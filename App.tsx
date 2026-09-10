@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Logo from "./components/Logo";
 import NavItem from "./components/NavItem";
 import NavList from "./components/NavList";
@@ -14,20 +15,33 @@ import { Msgs2OutlineDuo18 } from "./components/icons/Msgs2OutlineDuo18";
 import { UserSettingsOutlineDuo18 } from "./components/icons/UserSettingsOutlineDuo18";
 
 export default function App() {
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+
   return (
     <main className="h-screen p-2">
-      <div className="[--sidebar-width:256px] grid grid-cols-[var(--sidebar-width)_1fr] h-full">
+      <div className="grid grid-cols-[auto_1fr] h-full">
         {/* sidebar */}
-        <aside className="pl-1 pr-3">
-          <header className="pl-1.5 pt-[19px] flex items-center relative mb-[19px]">
+        <aside
+          data-sidebar
+          className="min-w-0 pl-1 pr-3 flex flex-col gap-6"
+          data-sidebar-collapsed={sidebarCollapsed ? "" : undefined}
+        >
+          <header className="pl-1.5 pt-[19px] flex items-center relative pb-1">
             <Logo />
-            <SidebarToggle />
+            <SidebarToggle
+              collapsed={sidebarCollapsed}
+              onClick={() => setSidebarCollapsed((collapsed) => !collapsed)}
+            />
+            <span data-divider className="absolute left-0 bottom-[-10px] w-full h-px bg-contrast-high/10"></span>
           </header>
 
-          <NavList className="mb-6">
-            <button className="group h-8 flex items-center gap-2.5 w-full rounded-[10px] px-2.5 select-none light:bg-contrast-high/3 hover:bg-contrast-high/5 light:inset-ring-1 light:inset-ring-contrast-high/5 light:shadow-2xs light:shadow-white/20 light:inset-shadow-2xs light:inset-shadow-contrast-high/5 dark:shadow-[inset_0px_-1px_0px_rgba(248,247,247,0.15),inset_0px_0px_0px_1px_rgba(248,247,247,0.15)]">
+          <NavList>
+            <button
+              data-sidebar-item
+              className="group h-8 flex items-center gap-2.5 w-full rounded-[10px] px-2.5 select-none light:bg-contrast-high/3 hover:bg-contrast-high/5 light:inset-ring-1 light:inset-ring-contrast-high/5 light:shadow-2xs light:shadow-white/20 light:inset-shadow-2xs light:inset-shadow-contrast-high/5 dark:shadow-[inset_0px_-1px_0px_rgba(248,247,247,0.15),inset_0px_0px_0px_1px_rgba(248,247,247,0.15)]"
+            >
               <MagnifierOutline18 className="text-contrast-medium group-hover:text-contrast-high shrink-0" />
-              <span className="text-contrast-low whitespace-nowrap">Search</span>
+              <span data-sidebar-fade className="text-contrast-low whitespace-nowrap">Search</span>
             </button>
 
             <NavItem icon={<MsgRobotOutlineDuo18 duoOpacity={0.2} />}>
@@ -35,7 +49,7 @@ export default function App() {
             </NavItem>
           </NavList>
 
-          <NavList label="Overview" className="mb-6">
+          <NavList label="Overview">
             <NavItem selected icon={<GridLayout5OutlineDuo18 duoOpacity={0.2} />}>
               Dashboard
             </NavItem>
@@ -45,7 +59,7 @@ export default function App() {
             </NavItem>
           </NavList>
 
-          <NavList label="Customers" className="mb-6">
+          <NavList label="Customers">
             <NavItem icon={<Msgs2OutlineDuo18 duoOpacity={0.2} />}>
               Conversations
             </NavItem>
@@ -59,7 +73,7 @@ export default function App() {
             </NavItem>
           </NavList>
 
-          <NavList label="Business" className="mb-6">
+          <NavList label="Business">
             <NavItem icon={<CircleDollarOutOutlineDuo18 duoOpacity={0.2} />}>
               Payments
             </NavItem>
